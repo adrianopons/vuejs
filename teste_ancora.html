@@ -14,19 +14,19 @@
 
     <div class="container">
 
-        <div id="tabela">
-            <tabelaLinhas>
-            </tabelaLinhas>
-        </div>
-
+            <anchored-heading :level="1">Olá Mundo!</anchored-heading>
 
     </div>
     
 
 
 
+    <!-- produção -->
+    
 
+    <!-- teste -->
     <script src="js/vue.js"></script>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -35,43 +35,21 @@
 
 
     <script>
-        
-        Vue.component('tabelaLinhas', {
-            props: ['todo'],
-            template: '#tabelaCompleta'
-        })
-
-        var dados = new Vue({
-            el: '#tabela',
-            template: '#my-template',
-            data: {
-                listaComidas: [
-                { id: 0, text: 'Vegetais' },
-                { id: 1, text: 'Queijo' },
-                { id: 2, text: 'Qualquer outra coisa que humanos podem comer' }
-                ]
+    Vue.component('anchored-heading', {
+        render: function (createElement) {
+            return createElement(
+            'h' + this.level,   // nome do elemento (tag)
+            this.$slots.default // vetor de elementos filhos
+            )
+        },
+        props: {
+            level: {
+            type: Number,
+            required: true
             }
-        })
-
+        }
+    })
     </script>
-
-    <script type="text/x-template" id="tabelaCompleta">
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="item in listaComidas">
-                    <td>{{ item.id }}</td>
-                    <td>{{ item.text }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </script>
-    
 
   </body>
 </html>
