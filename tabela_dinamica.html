@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Exemplos VueJS</title>
+  </head>
+  <body>
+
+    <div class="container">
+
+
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tit1</th>
+                        <th>Tit2</th>
+                        <th>Tit3</th>
+                        <th>Tit4</th>
+                    </tr>
+                </thead>
+                <tbody id="dados">
+                    <linhas></linhas>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <script>
+        // Define um novo componente chamado todo-item
+        Vue.component('linhas', {
+            // O componente todo-item agora aceita uma
+            // "prop", que é como um atributo personalizado.
+            // Esta propriedade foi chamada de "todo".
+            props: ['todo'],
+            template: '<tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>'
+        })
+
+        var dados = new Vue({
+            el: '#dados',
+            data: {
+                groceryList: [
+                { id: 0, text: 'Vegetais' },
+                { id: 1, text: 'Queijo' },
+                { id: 2, text: 'Qualquer outra coisa que humanos podem comer' }
+                ]
+            }
+        })
+
+    </script>
+    
+
+  </body>
+</html>
