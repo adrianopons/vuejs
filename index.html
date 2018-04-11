@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Exemplos VueJS</title>
+  </head>
+  <body>
+
+    <div class="container">
+        <h1>Exemplos VueJS!</h1>
+    
+        <div id="app">
+            {{ message }}
+        </div>
+
+        <br>
+
+        <div id="app-2">
+            <span v-bind:title="message">
+                Pare o mouse sobre mim e veja a dica interligada dinamicamente!
+            </span>
+        </div> 
+
+        <br>
+
+        <div id="app-3">
+            <p v-if="seen">Agora você me viu</p>
+        </div>
+
+        <br>
+
+        <div id="app-4">
+            <ol>
+                <li v-for="todo in todos">
+                {{ todo.text }}
+                </li>
+            </ol>
+        </div>
+
+        <br>
+
+        <div id="app-5">
+            <p>{{ message }}</p>
+            <button v-on:click="reverseMessage">Inverter Mensagem</button>
+        </div>
+
+        <br>
+
+        <div id="app-6">
+            <p>{{ message }}</p>
+            <input v-model="message">
+        </div>
+
+        <br>
+
+        <div id="app-7">
+            <ol>
+                <!--
+                Agora provemos cada todo-item com o objeto todo que ele
+                representa, de forma que seu conteúdo possa ser dinâmico.
+                Também precisamos prover cada componente com uma "chave",
+                a qual será explicada posteriormente.
+                -->
+                <todo-item
+                v-for="item in groceryList"
+                v-bind:todo="item"
+                v-bind:key="item.id">
+                </todo-item>
+            </ol>
+        </div>
+    </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!'
+            }
+        });
+        var app2 = new Vue({
+            el: '#app-2',
+            data: {
+                message: 'Você carregou esta página em ' + new Date().toLocaleString()
+            }
+        });
+        var app3 = new Vue({
+            el: '#app-3',
+            data: {
+                seen: true
+            }
+        });
+        //app4.todos.push({ text: 'Novo item' })
+        //app4.todos.pop()
+        var app4 = new Vue({
+            el: '#app-4',
+            data: {
+                todos: [
+                    { text: 'Aprender JavaScript' },
+                    { text: 'Aprender Vue' },
+                    { text: 'Criar algo incrível' }
+                ]
+            }
+        });
+        var app5 = new Vue({
+            el: '#app-5',
+            data: {
+                message: 'Olá Vue!'
+            },
+            methods: {
+                reverseMessage: function () {
+                    this.message = this.message.split('').reverse().join('')
+                }
+            }
+        });
+        var app6 = new Vue({
+            el: '#app-6',
+            data: {
+                message: 'Olá Vue!'
+            }
+        })
+
+
+        // Define um novo componente chamado todo-item
+        Vue.component('todo-item', {
+            // O componente todo-item agora aceita uma
+            // "prop", que é como um atributo personalizado.
+            // Esta propriedade foi chamada de "todo".
+            props: ['todo'],
+            template: '<li>{{ todo.text }}</li>'
+        })
+
+        var app7 = new Vue({
+            el: '#app-7',
+            data: {
+                groceryList: [
+                { id: 0, text: 'Vegetais' },
+                { id: 1, text: 'Queijo' },
+                { id: 2, text: 'Qualquer outra coisa que humanos podem comer' }
+                ]
+            }
+        })
+
+    </script>
+    
+
+  </body>
+</html>
